@@ -2,53 +2,74 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
+import java.awt.event.KeyEvent;
 import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.JCheckBox;
 
-public class JPhone {
-	public static void main(String[] args)
+public class SalaryCalculator {
+
+	public static void main(String[] args) 
 	{
 		JFrame frame = new JFrame();
-		frame.setBounds(400,400,600,300);
+		frame.setBounds(400,400,600,400);
 		frame.setLayout(null);
 		
-		JTextField name = new JTextField("NAME");
-		name.setBounds(100, 25, 100, 50);
-		frame.add(name);
+		JTextField rate = new JTextField("Hourly Rate");
+		rate.setBounds(100,25,100,50);
+		frame.add(rate);
+	
+		JTextField perweek = new JTextField("Hours/Week");
+		perweek.setBounds(100,100,100,50);
+		frame.add(perweek);
 		
-		JTextField num = new JTextField("PHONE NUMBER");
-		num.setBounds(100, 80, 100, 50);
-		frame.add(num);
+		JCheckBox box = new JCheckBox("Full Time");
+		box.setBounds(100, 150, 100, 50);
+		frame.add(box);
 		
-		JButton enter = new JButton("enter");
-		enter.setBounds(200,200, 50,50);
-		JLabel username = new JLabel("");
-		JLabel phone = new JLabel("");
-		enter.addActionListener(new ActionListener()
+		JLabel annual = new JLabel("Annual Salary: ");
+		annual.setBounds(100,250,400,50);
+		frame.add(annual);
+		
+		JButton calculate = new JButton("Calculate");
+		calculate.setBounds(100,200,100,50);
+		frame.add(calculate);
+		calculate.addActionListener(new ActionListener()
 				{
 					public void actionPerformed(ActionEvent e)
 					{
+						box.isSelected(); 
+						if(box.isSelected())
+						{
+							annual.setText((Double.toString((40*Double.parseDouble(rate.getText())*Double.parseDouble(perweek.getText()))) +"$"));
+						}
+						else
+						{
+							annual.setText((Double.toString((52*Double.parseDouble(rate.getText())*Double.parseDouble(perweek.getText()))) +"$"));
+						}
 						
-						username.setText("NAME: " + name.getText());
-						username.setBounds(300,25,150,50);
-						frame.add(username);
 						
-						phone.setText("NUMBER: " + num.getText());
-						phone.setBounds(300, 80, 150, 50);
-						frame.add(phone);
-						
-					frame.repaint();
-					
+						frame.repaint();
 					}
-				});
-		frame.add(enter);
+				});	
 		
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+
 }
+//new KeyListener(
+//{
+	//public void actionPerformed(KeyEvent e)
+	//{
+		//boolean press = true;
+		//if(press) perweek.setText("");
+		
+//	}
+//});
+
+//
