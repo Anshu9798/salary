@@ -1,3 +1,5 @@
+package salary; 
+
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -42,9 +44,8 @@ public class SalaryCalculator {
 				{
 					public void actionPerformed(ActionEvent e)
 					{
-						box.isSelected(); 
 						if(box.isSelected())
-						{
+						{		
 							annual.setText((Double.toString((40*Double.parseDouble(rate.getText())*Double.parseDouble(perweek.getText()))) +"$"));
 						}
 						else
@@ -56,20 +57,17 @@ public class SalaryCalculator {
 						frame.repaint();
 					}
 				});	
+		box.addActionListener(new ActionListener()
+				{
+					public void actionPerformed(ActionEvent e)
+					{
+						perweek.setText("40");
+						frame.repaint();
+					}
+				});
 		
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 }
-//new KeyListener(
-//{
-	//public void actionPerformed(KeyEvent e)
-	//{
-		//boolean press = true;
-		//if(press) perweek.setText("");
-		
-//	}
-//});
-
-//
